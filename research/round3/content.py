@@ -1,0 +1,46 @@
+RUBRIC_ID='WH-P34-NARR-0.1-draft'
+SOURCES={
+ 'curriculum':'https://edu.sh.gov.cn/cmsres/35/3562c00b89a34de59531c06f150946f7/ebb9ddd757251542e484fd975eff54a4.pdf',
+ 'cfms':'https://github.com/Atiyahsama/HiFTS/blob/933489269eb9dbf5f6f00f8e8be6ba0ccebc3dbb/CFMS-34/README.md',
+ 'privacy':'https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm',
+ 'conformal':'https://arxiv.org/abs/2107.07511',
+}
+DIMENSIONS=[
+ ('A','内容与任务回应',[
+ '题目要求交代清楚，有具体、相关的细节，所见所感表达充分。',
+ '主要回应任务，内容清楚，有相关细节，少量内容还可展开。',
+ '基本回应任务，主要内容可辨，但细节偏少或局部不清楚。',
+ '只部分回应任务，内容较零散，读者需要推测关键情节。',
+ '与任务联系很弱，只有少量可辨内容，主要意思难以把握。',
+ '文本可读，但未提供与任务有关的可评价内容。']),
+ ('B','顺序与组织',[
+ '顺序自然，句段联系清楚，重点安排得当，容易理解。',
+ '整体顺序清楚，句段基本衔接，个别转折或安排略突兀。',
+ '能辨认主要顺序，局部跳跃、重复或段落安排影响流畅。',
+ '顺序多处不清，句段联系较弱，理解事件或观察过程费力。',
+ '大多为互不衔接的片段，难以辨认先后或内容关系。',
+ '文本可读，但内容之间没有可辨认的组织关系。']),
+ ('C','语句与用词',[
+ '语句清楚通顺，用词贴切，有帮助读者理解的具体表达。',
+ '大部分语句通顺，用词基本合适，少数问题不妨碍理解。',
+ '主要意思可懂，有重复、含混或不通顺的词句。',
+ '词句问题较多，部分意思需要推测才能理解。',
+ '多数词句难以理解，仅少量句子表达出完整意思。',
+ '文本可读，但没有形成可理解的句意。']),
+ ('D','基本用字与标点',[
+ '用字及已学常用标点整体恰当，偶有笔误不影响阅读。',
+ '有少量用字或标点问题，基本不影响阅读。',
+ '用字或标点问题反复出现，局部影响阅读。',
+ '问题较多，经常打断阅读或造成歧义。',
+ '问题密集，阅读大部分内容困难。',
+ '文本可读，但用字和标点问题使基本表达无法辨认。']),
+]
+SCHEMAS={
+ 'prompts':['prompt_id','grade','rubric_id','genre','prompt_text','writing_conditions','prompt_version'],
+ 'essays':['essay_id','student_key','school_key','grade','prompt_id','rubric_id','text_relpath','text_sha256','authorization_id','privacy_status','source_group','assistance'],
+ 'permissions':['authorization_id','institution_permission','guardian_consent','separate_sensitive_consent','student_assent','research_training','closed_evaluation','cpu_service_use','release_weights','release_text','retention_until','withdrawal_channel','document_ref_local'],
+ 'ratings_A':['essay_id','rubric_id','rater_id','ratable_status','A_content','B_structure','C_language','D_conventions','total20','evidence','flags','recorded_at','revision'],
+ 'ratings_B':['essay_id','rubric_id','rater_id','ratable_status','A_content','B_structure','C_language','D_conventions','total20','evidence','flags','recorded_at','revision'],
+ 'adjudications':['essay_id','adjudicator_id','reason','A_content','B_structure','C_language','D_conventions','reference_total20','reference_rule','rationale','recorded_at'],
+ 'split_registry':['essay_id','student_key','prompt_id','source_group','partition','locked_at','custodian_id','dataset_version','text_sha256'],
+}

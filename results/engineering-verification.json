@@ -1,0 +1,19 @@
+{
+  "scope": "OpenEssayScore packaging and isolated CPU engineering checks; not new accuracy evidence",
+  "date": "2026-10-22",
+  "environment": "Linux Python 3.11.11; existing pinned CPU dependencies; CUDA_VISIBLE_DEVICES empty",
+  "source_only": {"passed": 10, "skipped_artifact_dependent": 30, "failed": 0},
+  "authorized_artifacts": {"passed": 40, "failed": 0},
+  "additional_backup_tests": {"passed": 3, "failed": 0, "scope": "retry, visibility check, existing-asset verification"},
+  "wheel_build_passed": true,
+  "python_cli_http_numeric_parity": true,
+  "historical_preprocessing_parity": true,
+  "original_v1_hashes_unchanged": true,
+  "restore_smoke_passed": true,
+  "restore_source": "pre-publication sanitized archive; GitHub round-trip receipt is separate",
+  "gpu_training_seconds": 0,
+  "new_accuracy_experiment": false,
+  "public_weights_available": false,
+  "automatic_risk_routing": false,
+  "teacher_accuracy_evidence": false
+}

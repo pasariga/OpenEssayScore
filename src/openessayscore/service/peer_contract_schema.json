@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "DimensionScore": {
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "enum": [
+            "content_and_ideas",
+            "structure_and_coherence",
+            "language_and_expression",
+            "writing_conventions"
+          ],
+          "title": "Dimension",
+          "type": "string"
+        },
+        "score": {
+          "maximum": 25,
+          "minimum": 0,
+          "title": "Score",
+          "type": "number"
+        },
+        "max_score": {
+          "const": 25,
+          "title": "Max Score",
+          "type": "integer"
+        },
+        "rationale": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceItem"
+          },
+          "maxItems": 4,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dimension",
+        "score",
+        "max_score",
+        "rationale"
+      ],
+      "title": "DimensionScore",
+      "type": "object"
+    },
+    "EvidenceItem": {
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "start_offset": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Offset"
+        },
+        "end_offset": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Offset"
+        }
+      },
+      "required": [
+        "quote",
+        "rationale"
+      ],
+      "title": "EvidenceItem",
+      "type": "object"
+    },
+    "ImprovementSuggestion": {
+      "additionalProperties": false,
+      "properties": {
+        "priority": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "content",
+            "structure",
+            "language",
+            "expression",
+            "conventions"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "suggestion": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Suggestion",
+          "type": "string"
+        },
+        "example_revision": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Example Revision"
+        }
+      },
+      "required": [
+        "priority",
+        "category",
+        "suggestion"
+      ],
+      "title": "ImprovementSuggestion",
+      "type": "object"
+    },
+    "ReviewAnnotation": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "content",
+            "structure",
+            "language",
+            "expression",
+            "conventions"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "kind": {
+          "default": "improvement",
+          "enum": [
+            "improvement",
+            "strength"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "issue_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "typo",
+                "grammar",
+                "punctuation",
+                "wording",
+                "sentence",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issue Type"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "start_offset": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Offset"
+        },
+        "end_offset": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Offset"
+        },
+        "comment": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Comment",
+          "type": "string"
+        },
+        "suggestion": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Suggestion",
+          "type": "string"
+        }
+      },
+      "required": [
+        "category",
+        "severity",
+        "quote",
+        "comment",
+        "suggestion"
+      ],
+      "title": "ReviewAnnotation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Stable provider-neutral contract used by each independent model review.",
+  "properties": {
+    "overall_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Overall Score",
+      "type": "number"
+    },
+    "summary": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Summary",
+      "type": "string"
+    },
+    "dimension_scores": {
+      "items": {
+        "$ref": "#/$defs/DimensionScore"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Dimension Scores",
+      "type": "array"
+    },
+    "annotations": {
+      "items": {
+        "$ref": "#/$defs/ReviewAnnotation"
+      },
+      "maxItems": 12,
+      "title": "Annotations",
+      "type": "array"
+    },
+    "improvement_suggestions": {
+      "items": {
+        "$ref": "#/$defs/ImprovementSuggestion"
+      },
+      "maxItems": 8,
+      "title": "Improvement Suggestions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "overall_score",
+    "summary",
+    "dimension_scores"
+  ],
+  "title": "EssayReviewOutput",
+  "type": "object"
+}

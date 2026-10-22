@@ -1,0 +1,178 @@
+{
+  "selected_family": "character_tfidf_ridge",
+  "target_scale": [
+    0,
+    10
+  ],
+  "models": {
+    "training_mean": {
+      "test": {
+        "mae": 1.2140346205059922,
+        "rmse": 1.3604615072347805,
+        "qwk": 0.0,
+        "pearson": null,
+        "spearman": null,
+        "within_1_point": 0.43,
+        "rounded_exact": 0.0
+      },
+      "dev": {
+        "mae": 0.7938615179760319,
+        "rmse": 1.093110302381934,
+        "qwk": 0.0,
+        "pearson": null,
+        "spearman": null,
+        "within_1_point": 0.69,
+        "rounded_exact": 0.61
+      },
+      "train": {
+        "mae": 1.100395212065227,
+        "rmse": 1.30978470191164,
+        "qwk": 0.0,
+        "pearson": null,
+        "spearman": null,
+        "within_1_point": 0.5033288948069241,
+        "rounded_exact": 0.2103861517976032
+      }
+    },
+    "length_ridge": {
+      "test": {
+        "mae": 1.0177543830871583,
+        "rmse": 1.205275327210236,
+        "qwk": 0.2964964591874767,
+        "pearson": 0.4774836504251071,
+        "spearman": 0.4581872806066711,
+        "within_1_point": 0.52,
+        "rounded_exact": 0.21
+      },
+      "dev": {
+        "mae": 0.7184811687469482,
+        "rmse": 0.9730314908595651,
+        "qwk": 0.3601831896551724,
+        "pearson": 0.44859758746641576,
+        "spearman": 0.46963280261204776,
+        "within_1_point": 0.73,
+        "rounded_exact": 0.51
+      },
+      "train": {
+        "mae": 0.9538476635390687,
+        "rmse": 1.16782235336932,
+        "qwk": 0.3314631268034134,
+        "pearson": 0.4559552576353217,
+        "spearman": 0.44497873941367316,
+        "within_1_point": 0.5778961384820239,
+        "rounded_exact": 0.3062583222370173
+      },
+      "alpha": 100
+    },
+    "character_tfidf_ridge": {
+      "test": {
+        "mae": 0.9545299816131592,
+        "rmse": 1.139934180348547,
+        "qwk": 0.35988620199146504,
+        "pearson": 0.5524381356795217,
+        "spearman": 0.509890203724897,
+        "within_1_point": 0.6,
+        "rounded_exact": 0.23
+      },
+      "dev": {
+        "mae": 0.6790708017349243,
+        "rmse": 0.9139310534007912,
+        "qwk": 0.5093041040020393,
+        "pearson": 0.5407382994904629,
+        "spearman": 0.5348685570221815,
+        "within_1_point": 0.73,
+        "rounded_exact": 0.53
+      },
+      "train": {
+        "mae": 0.09423811235694529,
+        "rmse": 0.11575234968363333,
+        "qwk": 1.0,
+        "pearson": 0.9989205461400001,
+        "spearman": 0.9712296295052404,
+        "within_1_point": 1.0,
+        "rounded_exact": 1.0
+      },
+      "alpha": 0.1
+    },
+    "semantic_ridge": {
+      "test": {
+        "mae": 0.9959292411804199,
+        "rmse": 1.2409449896741684,
+        "qwk": 0.39790189125295516,
+        "pearson": 0.44984454107009975,
+        "spearman": 0.4598298393865108,
+        "within_1_point": 0.57,
+        "rounded_exact": 0.3
+      },
+      "dev": {
+        "mae": 0.8424238157272339,
+        "rmse": 1.0577072162805616,
+        "qwk": 0.36702238962125966,
+        "pearson": 0.4115180432477129,
+        "spearman": 0.41408935060190477,
+        "within_1_point": 0.69,
+        "rounded_exact": 0.37
+      },
+      "train": {
+        "mae": 0.6523212878586608,
+        "rmse": 0.8138349996094021,
+        "qwk": 0.7295295587489046,
+        "pearson": 0.7900555497878395,
+        "spearman": 0.7917110000874885,
+        "within_1_point": 0.7656458055925432,
+        "rounded_exact": 0.4580559254327563
+      },
+      "alpha": 100
+    },
+    "semantic_structure_ridge": {
+      "test": {
+        "mae": 1.1198851585388183,
+        "rmse": 1.388864410487902,
+        "qwk": 0.370654519299928,
+        "pearson": 0.41383362964112924,
+        "spearman": 0.4004103634544261,
+        "within_1_point": 0.5,
+        "rounded_exact": 0.28
+      },
+      "dev": {
+        "mae": 0.9134209060668945,
+        "rmse": 1.1890974164853367,
+        "qwk": 0.3998344370860927,
+        "pearson": 0.3943555964006473,
+        "spearman": 0.3776435026680712,
+        "within_1_point": 0.66,
+        "rounded_exact": 0.38
+      },
+      "train": {
+        "mae": 0.538275899328341,
+        "rmse": 0.6622837797436482,
+        "qwk": 0.8161114345214161,
+        "pearson": 0.8645028943286844,
+        "spearman": 0.8667331342756851,
+        "within_1_point": 0.8708388814913449,
+        "rounded_exact": 0.5246338215712384
+      },
+      "alpha": 10
+    }
+  },
+  "selected_bootstrap95": {
+    "mae": [
+      0.8331910803318024,
+      1.077012917160988
+    ],
+    "qwk": [
+      0.2129137940307438,
+      0.48111697465041514
+    ]
+  },
+  "gpu_wall_seconds": 4.413051023999287,
+  "limitations": [
+    "100 test essays; agreement-selected official test distribution",
+    "dev distribution differs sharply from train and test",
+    "test only scores 6,8,10 in this release; lower scores untested",
+    "no student/school-disjoint split can be verified",
+    "no prompt relevance or plagiarism detector",
+    "encoder frozen; only supervised scorer trained on human ratings",
+    "label-shift and grade generalization not validated"
+  ]
+}

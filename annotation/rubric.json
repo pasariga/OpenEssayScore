@@ -1,0 +1,81 @@
+{
+  "rubric_id": "WH-P34-NARR-0.1-draft",
+  "status": "original draft; no teacher validation",
+  "grade_range": [
+    3,
+    4
+  ],
+  "scope": [
+    "记事",
+    "写人",
+    "观察记录"
+  ],
+  "total_max": 20,
+  "dimensions": [
+    {
+      "id": "A",
+      "name": "内容与任务回应",
+      "max": 5,
+      "anchors": {
+        "5": "题目要求交代清楚，有具体、相关的细节，所见所感表达充分。",
+        "4": "主要回应任务，内容清楚，有相关细节，少量内容还可展开。",
+        "3": "基本回应任务，主要内容可辨，但细节偏少或局部不清楚。",
+        "2": "只部分回应任务，内容较零散，读者需要推测关键情节。",
+        "1": "与任务联系很弱，只有少量可辨内容，主要意思难以把握。",
+        "0": "文本可读，但未提供与任务有关的可评价内容。"
+      }
+    },
+    {
+      "id": "B",
+      "name": "顺序与组织",
+      "max": 5,
+      "anchors": {
+        "5": "顺序自然，句段联系清楚，重点安排得当，容易理解。",
+        "4": "整体顺序清楚，句段基本衔接，个别转折或安排略突兀。",
+        "3": "能辨认主要顺序，局部跳跃、重复或段落安排影响流畅。",
+        "2": "顺序多处不清，句段联系较弱，理解事件或观察过程费力。",
+        "1": "大多为互不衔接的片段，难以辨认先后或内容关系。",
+        "0": "文本可读，但内容之间没有可辨认的组织关系。"
+      }
+    },
+    {
+      "id": "C",
+      "name": "语句与用词",
+      "max": 5,
+      "anchors": {
+        "5": "语句清楚通顺，用词贴切，有帮助读者理解的具体表达。",
+        "4": "大部分语句通顺，用词基本合适，少数问题不妨碍理解。",
+        "3": "主要意思可懂，有重复、含混或不通顺的词句。",
+        "2": "词句问题较多，部分意思需要推测才能理解。",
+        "1": "多数词句难以理解，仅少量句子表达出完整意思。",
+        "0": "文本可读，但没有形成可理解的句意。"
+      }
+    },
+    {
+      "id": "D",
+      "name": "基本用字与标点",
+      "max": 5,
+      "anchors": {
+        "5": "用字及已学常用标点整体恰当，偶有笔误不影响阅读。",
+        "4": "有少量用字或标点问题，基本不影响阅读。",
+        "3": "用字或标点问题反复出现，局部影响阅读。",
+        "2": "问题较多，经常打断阅读或造成歧义。",
+        "1": "问题密集，阅读大部分内容困难。",
+        "0": "文本可读，但用字和标点问题使基本表达无法辨认。"
+      }
+    }
+  ],
+  "unratable_policy": "missing, unreadable or wrong task type -> null scores, not zero",
+  "original_design": [
+    "equal weights, 0..5 anchor descriptions, sum 0..20",
+    "human adjudication threshold and draft collection protocol"
+  ],
+  "adapted_from": "CFMS-34 broad content, structure, expression and conventions taxonomy; anchors rewritten",
+  "not_equivalent_to": "CFMS dual-rater holistic sum 0..10; no numerical conversion is validated",
+  "sources": {
+    "curriculum": "https://edu.sh.gov.cn/cmsres/35/3562c00b89a34de59531c06f150946f7/ebb9ddd757251542e484fd975eff54a4.pdf",
+    "cfms": "https://github.com/Atiyahsama/HiFTS/blob/933489269eb9dbf5f6f00f8e8be6ba0ccebc3dbb/CFMS-34/README.md",
+    "privacy": "https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm",
+    "conformal": "https://arxiv.org/abs/2107.07511"
+  }
+}

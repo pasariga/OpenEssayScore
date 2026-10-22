@@ -1,0 +1,33 @@
+{
+  "policy_id": "WH-REVIEW-0.1-draft",
+  "status": "design_only_not_enabled",
+  "rubric_id": "WH-P34-NARR-0.1-draft",
+  "automatic_scoring_enabled": false,
+  "interval_calibrated": false,
+  "interval": null,
+  "hard_stops": [
+    "missing/insufficient authorization",
+    "rubric/model scale mismatch",
+    "grade or task outside declared scope",
+    "missing prompt or unreadable/OCR-unverified text",
+    "non-finite/out-of-range model result",
+    "model artifact hash mismatch"
+  ],
+  "manual_review_reasons": [
+    "all scores until teacher pilot and independent validation completed",
+    "rater total gap >=4/20 or any dimension gap >=2/5",
+    "rater differs on ratability or relevance",
+    "input outside validated length/domain",
+    "unstable prediction or large model disagreement",
+    "future calibrated interval too wide under predeclared utility threshold"
+  ],
+  "label_rule": "no model scores visible during independent human rating; never overwrite raw ratings",
+  "conformal_plan": {
+    "alpha": 0.1,
+    "calibration_required": "separate real human-rated calibration set not used for fitting or model/threshold selection",
+    "quantile_rank": "ceil((n+1)*(1-alpha)); if rank>n abstain rather than invent finite coverage",
+    "coverage_scope": "marginal under exchangeability; no per-essay certainty or guaranteed grade/prompt subgroup coverage",
+    "shift_policy": "new prompt, grade or school drift requires review/recalibration; no unconditional claim"
+  },
+  "source": "https://arxiv.org/abs/2107.07511"
+}

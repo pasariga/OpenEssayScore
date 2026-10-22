@@ -1,0 +1,9 @@
+# Provenance and neutral project identity
+
+OpenEssayScore is the independent toolkit extracted from the historical **WenHeng-Score** research effort. That research originated while exploring autonomous scoring alongside an existing multi-model essay application. The application is neither an owner platform requirement nor a runtime dependency of this repository. No production source, service or database is packaged. Other legacy projects/repositories are unrelated to this archive.
+
+Retained historical identities: `round1-cfms34-bge-v1`, `round2-audit-cv-v1`, `round3-rubric-protocol-v1`, `round4-trust-review-v1`, `round5-service-v1`, model ID `wenheng-score-v1-20261022`, and rubric draft `WH-P34-NARR-0.1-draft`. Renaming those records would hide lineage. `research/wenheng_score` and round directories preserve that context; the reusable installed namespace is `openessayscore`.
+
+Extraction changes: generic configurable workspace roots; canonical package/API/CLI names; optional provider callables with neutral transport fixtures; no private network/host values; original test text replaced by a technical control with no human score; runtime review code uses package imports; aggregate-only privacy export; documentation/licence separation. Original v1 model and vectorizer bytes, inference normalization, and clipping remain unchanged. The canonical response contract is `openessayscore/1.0`; this is an explicit API migration from the historical service contract, not a model upgrade. External clients of the old prototype must adapt envelope names; numeric parity is tested separately.
+
+Historical-source fingerprints and model export transformations are kept in the private archive. Original full research backups remain in their existing controlled locations. Aggregated public reports remove student-level records; the GitHub archive does not claim to reproduce unavailable raw data or the removed individual risk references.
