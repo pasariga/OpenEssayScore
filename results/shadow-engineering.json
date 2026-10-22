@@ -1,0 +1,15 @@
+{
+  "scope": "Historical R6 isolated CPU engineering checks; no production deployment or new accuracy evaluation",
+  "new_tests_passed": 29,
+  "failed": 0,
+  "sampled_peak_rss_bytes": 226992128,
+  "cold_to_ready_seconds": 1.114773769997555,
+  "serial_requests": 50,
+  "p95_ms": 1.3824240013491362,
+  "transport": "protected Unix domain socket",
+  "tcp_listeners": 0,
+  "docker_hard_limit_tested": false,
+  "cpu_quota_025_tested": false,
+  "automatic_risk_routing": false,
+  "gpu_training_seconds": 0
+}

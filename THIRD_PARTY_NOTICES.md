@@ -17,5 +17,6 @@ Direct package metadata inspected in the existing CPU research environment on 20
 | jsonschema | 4.26.0 | MIT |
 | pytest (test only) | 9.0.2 | MIT |
 | HTTPX (test only) | 0.28.1 | BSD-3-Clause |
+| PyYAML (deployment tests only) | 6.0.2 | MIT |
 
 These are not a complete transitive binary SBOM. No dependency source or wheels are redistributed in the repositories/releases. Use the distribution's own licence files and metadata; when redistributing a container or offline environment, inventory every transitive package and native library, preserve notices, and meet any source/relocation obligations. No licence compatibility conclusion for an unbuilt downstream distribution is implied.

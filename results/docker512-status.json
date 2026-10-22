@@ -1,0 +1,11 @@
+{
+  "scope": "actual Docker hard-limit execution status, separate from CPU/RSS tests",
+  "executed": false,
+  "passed": null,
+  "reason": "No suitable nonproduction Docker host currently available; managed workspace memory/CPU cgroups read-only; local Docker/WSL unavailable",
+  "source_tests_passed": 30,
+  "source_tests_are_not_hard_limit_evidence": true,
+  "gpu_training_seconds": 0,
+  "production_deployment": false,
+  "automatic_risk_routing": false
+}

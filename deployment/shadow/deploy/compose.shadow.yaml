@@ -1,0 +1,49 @@
+name: oes-shadow-r6
+services:
+  score:
+    image: ${OES_SHADOW_IMAGE:?Set an independently built digest-pinned image}
+    pull_policy: never
+    user: "10001:10001"
+    read_only: true
+    network_mode: none
+    restart: "no"
+    cpus: 0.25
+    mem_limit: 512m
+    memswap_limit: 512m
+    pids_limit: 64
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      CUDA_VISIBLE_DEVICES: ""
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=32m,uid=10001,gid=10001,mode=0700
+      - /run/shadow:rw,noexec,nosuid,nodev,size=8m,uid=10001,gid=10001,mode=0700
+    volumes:
+      - type: bind
+        source: ${OES_MODEL_STORE:?Set the verified independent model store}
+        target: /models
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OES_CONTROL_DIR:?Set the independently approved policy and authorization directory}
+        target: /control
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OES_RESULTS_DIR:?Set an empty dedicated shadow results directory}
+        target: /results
+        bind: {create_host_path: false}
+    command: [python, /opt/shadow/serve_shadow.py, --store, /models, --socket, /run/shadow/score.sock]
+    healthcheck:
+      test: [CMD, python, /opt/shadow/healthcheck.py, --socket, /run/shadow/score.sock]
+      interval: 30s
+      timeout: 2s
+      retries: 2
+      start_period: 30s
+    logging:
+      driver: local
+      options: {max-size: 1m, max-file: "2"}

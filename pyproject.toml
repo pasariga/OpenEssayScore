@@ -16,7 +16,7 @@ openessayscore = "openessayscore.__main__:main"
 
 [project.optional-dependencies]
 http = ["fastapi==0.128.0", "uvicorn==0.40.0"]
-test = ["fastapi==0.128.0", "uvicorn==0.40.0", "pytest>=9,<10", "httpx==0.28.1"]
+test = ["fastapi==0.128.0", "uvicorn==0.40.0", "pytest>=9,<10", "httpx==0.28.1", "PyYAML>=6,<7"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

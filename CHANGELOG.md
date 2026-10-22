@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — independent deployment preparation
+
+- Curated R6 dispatcher/UDS/rollback examples and tests with no private host inventory.
+- Added a reusable Docker512MiB verification harness and allowlisted image build context.
+- Documented the difference between CPU RSS evidence, capacity planning and actual cgroup enforcement. Docker hard-limit execution remains pending; no stable model promotion.
+- Retained existing v1 artifacts and all historical backup/release versions.
+
 ## 0.1.0 — source research release, 2026-10-22
 
 - Extracted independent OpenEssayScore Python package, CLI and optional HTTP API.

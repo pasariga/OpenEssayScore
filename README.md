@@ -93,6 +93,8 @@ curl -X POST http://127.0.0.1:8765/v1/score -H 'Content-Type: application/json' 
 
 ## 研发历程与复现
 
+第五轮CPU服务与第六轮隔离部署准备已整理为[通用CPU部署验证指南](docs/cpu-deployment-validation.md)，相关示例在 `deployment/shadow/`。新增Docker测试入口会核对内核实际内存限额，并覆盖冷启动、重复/并发请求、OOM及恢复。**当前尚未取得可用的非生产Docker环境，512MiB硬限制没有实测通过；既有RSS或虚拟地址空间测试不能代替它。** 这些材料不依赖文衡网站或生产配置。
+
 | 阶段 | 已完成的成果 |
 | --- | --- |
 | R1 | 真实人工标注监督学习；验证集选型；一次历史测试；保存 v1 |

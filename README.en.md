@@ -87,6 +87,8 @@ A fresh source clone and private Release download passed all 112 file checksums.
 
 ## Research history and reproduction
 
+[Independent CPU deployment validation](docs/cpu-deployment-validation.md) generalizes the R5 service and R6 protected-shadow preparation. Examples are under `deployment/shadow/`; `tools/docker_hardlimit.py` checks actual kernel limits, cold starts, repeat/concurrent requests, OOM and recovery. **Docker512MiB testing is currently pending an available nonproduction Docker environment.** RSS observations and address-space caps are not substitutes for a passed cgroup hard-limit test. No website or production configuration is required.
+
 R1: supervised scoring and validation-selected v1. R2: audit and nested internal CV, no v2. R3: draft grade-3/4 annotation protocol, no new teacher records. R4: four-role internal risk validation with negative results retained. R5: CPU serving and offline integration. This release adds neutral packaging, interfaces, documentation, backup and recovery checks without retraining or changing v1 weights.
 
 [Reproduction](docs/reproduction.md) · [Lineage](docs/lineage.md) · [Remote GPU development](docs/remote-development.md) · [Backup/recovery](docs/backup-recovery.md)

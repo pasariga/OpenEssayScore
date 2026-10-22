@@ -1,0 +1,15 @@
+{
+  "policy_version": "round6-shadow-prep-v1",
+  "enabled": false,
+  "sample_rate": 0.01,
+  "max_per_hour": 10,
+  "max_pending": 2,
+  "failure_threshold": 3,
+  "cooldown_seconds": 60,
+  "result_max_bytes": 10485760,
+  "authorization_purpose": "isolated_shadow_evaluation",
+  "native_rubric": "CFMS34-holistic-sum-0to10",
+  "score_range": [0, 10],
+  "aggregation_weight": 0,
+  "automatic_risk_routing_enabled": false
+}
