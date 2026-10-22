@@ -20,6 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-This license covers original project code and documentation only. It does not
-relicense CFMS-34, third-party pretrained models, or privately archived weights.
-See docs/data-and-models.md for their separate terms and release boundaries.

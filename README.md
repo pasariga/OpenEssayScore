@@ -108,4 +108,6 @@ curl -X POST http://127.0.0.1:8765/v1/score -H 'Content-Type: application/json' 
 
 不同量规和分数尺度没有经过验证的映射时，只能并列展示结果；示例适配器不调用任何付费 API，不简单加权，不改调用方已有结果。未来优先收集合法授权、双人独立评分、跨题目/年级的新数据，另设校准与封存测试，再评估新评分器与风险模块。没有独立证据，不发布稳定 v2。
 
+GitHub 首次恢复验证：重新克隆源码、下载私有归档，112 个文件校验通过；独立 CPU 目录中 43 项测试通过，并完成 wheel 构建、离线安装及 Python/CLI/HTTP 一致性检查。这些是工程验证，不是新增准确率证据。[验证记录](results/github-restore.json)
+
 原创代码及文档采用 [MIT](LICENSE)；数据、模型与依赖条款分别见 [许可说明](docs/licensing.md)、[第三方声明](THIRD_PARTY_NOTICES.md)。[贡献指南](CONTRIBUTING.md) · [安全说明](SECURITY.md) · [版本记录](CHANGELOG.md) · [备份恢复](docs/backup-recovery.md)

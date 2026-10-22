@@ -1,0 +1,35 @@
+{
+  "scope": "Fresh GitHub source clone + private Release download; independent CPU restore",
+  "passed": true,
+  "public_commit": "910eef47c72cb3beea40ed7dfe97df04f1ee1a1b",
+  "archive_sha256": "14827aac84ff6b91ad9e66ee4f4fa928f33b8f249cc83bd4e8af59c6f87d6208",
+  "integrity": {
+    "passed": true,
+    "files_verified": 112,
+    "archive_sha256": "14827aac84ff6b91ad9e66ee4f4fa928f33b8f249cc83bd4e8af59c6f87d6208"
+  },
+  "pytest_passed": 43,
+  "pytest_failed": 0,
+  "wheel_built_and_installed_without_network": true,
+  "installed_module_from_restore_directory": true,
+  "smoke": {
+    "passed": true,
+    "model_hashes_match": true,
+    "cpu_only": true,
+    "source_module": "openessayscore.scorer",
+    "native_score_in_range": true,
+    "confidence_is_null": true,
+    "automatic_risk_routing": false,
+    "teacher_accuracy_evidence": false,
+    "elapsed_seconds": 1.0555010509997373
+  },
+  "parity": {
+    "installed_wheel_used": true,
+    "python_cli_http_parity": true,
+    "no_torch_import": true,
+    "teacher_accuracy_evidence": false
+  },
+  "gpu_training_seconds": 0,
+  "new_accuracy_claim": false,
+  "private_original_workspace_not_used_for_loading": true
+}

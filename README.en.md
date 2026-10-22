@@ -81,6 +81,10 @@ Official test essays have agreeing raters and observed totals only 6/8/10. They 
 
 R4 risk AUROC **0.512**, approximately random: reviewing 22.10% captured only 21.54% of large errors. The gate failed; tuning stopped and automatic routing remains disabled. Internal intervals cannot be transferred to v1 or claimed as calibrated per-essay confidence. R5 passed 29 service tests: one logical CPU cold start ~1.30 s, serial P95 ~2.0 ms, four-way P95 8.54 ms, sampled peak RSS ~230 MiB; 16-way requests caused throttling. These are measured cloud CPU results, not universal guarantees.
 
+## GitHub recovery verification
+
+A fresh source clone and private Release download passed all 112 file checksums. In a separate CPU directory, all 43 tests passed; the recovered source built and installed offline as a wheel with identical Python/CLI/HTTP results and no Torch import. These are engineering checks, not new accuracy evidence. [Recovery record](results/github-restore.json)
+
 ## Research history and reproduction
 
 R1: supervised scoring and validation-selected v1. R2: audit and nested internal CV, no v2. R3: draft grade-3/4 annotation protocol, no new teacher records. R4: four-role internal risk validation with negative results retained. R5: CPU serving and offline integration. This release adds neutral packaging, interfaces, documentation, backup and recovery checks without retraining or changing v1 weights.
