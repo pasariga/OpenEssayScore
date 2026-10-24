@@ -1,12 +1,20 @@
 # OpenEssayScore
 
-**Open-Source Chinese Essay Scoring Toolkit** · [中文](README.md)
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+**Open-Source Chinese Essay Scoring Toolkit**
 
 An independent research toolkit for developers, researchers, and education software teams: supervised Chinese essay scoring, CPU inference, data processing, reproducible evaluation, and optional HTTP serving. No website, production database, proprietary platform, or paid API is required.
 
 This **0.1.0 source release** preserves the historical WenHeng-Score v1 model lineage. It trains a character TF-IDF + Ridge holistic score predictor, not a general-purpose LLM. Scores use the native **0–10** rubric. Cross-grade, cross-prompt, and classroom validity remain unestablished; this is not a teacher-level assessment product.
 
-**Weights are not publicly distributed yet.** The repository contains original source, empty annotation templates, and aggregate results, with no student essays or model binaries. CFMS-34 is publisher-labelled CC BY 4.0 with research-use and human-oversight guidance. Public weight redistribution/use boundaries still require clarification. Authorized artifacts are retained in a private research archive; they are not covered by the source MIT license. Installing the source does not provide a ready-to-score model. Missing artifacts yield readiness 503, never fabricated scores. See [licensing](docs/licensing.md).
+**The source checkout does not include ready-to-use weights.** The repository contains original source, empty annotation templates, and aggregate results, with no student essays or model binaries. CFMS-34 is publisher-labelled CC BY 4.0 with research-use and human-oversight guidance. Public weight redistribution/use boundaries still require clarification. Separate research export records and existing Release assets are held in [OpenEssayScore-Archive](https://github.com/pasariga/OpenEssayScore-Archive), whose GitHub visibility is public as of 2026-10-24. That archive is not covered by the source MIT license and must not be described as access-controlled merely because older notes call it private. Installing the source does not provide a ready-to-score model. Missing artifacts yield readiness 503, never fabricated scores. See [licensing](docs/licensing.md).
+
+## Project identity and current scope
+
+OpenEssayScore extracts the historical WenHeng-Score research line into an independent package. It is neither the historical 妙笔智改 interface (short name 智笔, English identifier ZhiBi) nor the Vue/FastAPI 文衡 application. That application uses a multi-provider 100-point review protocol; this toolkit preserves a supervised 0–10 scorer. No validated conversion or production integration is asserted.
+
+This documentation update does not retrain a model, publish weights, repeat benchmarks or establish that older infrastructure is still running. Historical results below retain their original evidence boundaries.
 
 ## Architecture
 
@@ -83,7 +91,7 @@ R4 risk AUROC **0.512**, approximately random: reviewing 22.10% captured only 21
 
 ## GitHub recovery verification
 
-A fresh source clone and private Release download passed all 112 file checksums. In a separate CPU directory, all 43 tests passed; the recovered source built and installed offline as a wheel with identical Python/CLI/HTTP results and no Torch import. These are engineering checks, not new accuracy evidence. [Recovery record](results/github-restore.json)
+The historical recovery record reports a fresh source clone and archive Release download passing all 112 file checksums. In a separate CPU directory, all 43 tests passed; the recovered source built and installed offline as a wheel with identical Python/CLI/HTTP results and no Torch import. These are engineering checks, not new accuracy evidence. [Recovery record](results/github-restore.json)
 
 ## Research history and reproduction
 
