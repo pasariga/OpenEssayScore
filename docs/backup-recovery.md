@@ -2,6 +2,8 @@
 
 No recurring task is installed. `tools/backup.py` uses an existing authenticated GitHub CLI and HTTPS Git. It never reads a token or changes global Git credential configuration. Authenticate interactively yourself if needed. A private repository does not authorize copying student data.
 
+> Visibility check (2026-10-24): `pasariga/OpenEssayScore-Archive` is currently public and has existing published Release assets. The private-archive workflow below describes the original intended storage model, not the current GitHub access controls. Confirm the intended policy separately; this documentation change does not alter visibility or publish any artifact.
+
 ## Reviewed sources and profile
 
 Maintain three separate directories: public source checkout, private archive metadata checkout, and a manually selected/sanitized private payload. Do not point payload at an entire research workspace or old mixed archive. Payload includes permitted model files, code, configurations, aggregate reports and export provenance; no raw records, individual embeddings/predictions, upstream backbone or credentials. Hash approval of a binary records a human-reviewed selection, not an automatic privacy proof.

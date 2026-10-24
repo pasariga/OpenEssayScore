@@ -54,7 +54,7 @@ python -m pip install -e '.[http,test]'
 python -m pytest -q
 ```
 
-无权重也能运行源码测试；需要私有权重的集成测试会明确跳过。若你已有合法取得、哈希匹配的历史 v1 文件，把它们放在你自己的 `models/v1`，并遵守单独的数据与模型使用条件。**不要加载来历不明的 joblib/pickle 文件。**
+无权重也能运行源码测试；需要单独权重文件的集成测试会明确跳过。若你已有合法取得、哈希匹配的历史 v1 文件，把它们放在你自己的 `models/v1`，并遵守单独的数据与模型使用条件。**不要加载来历不明的 joblib/pickle 文件。**
 
 ```bash
 python -m openessayscore init-v1 --model-dir models/v1 --store workspace/model-store
@@ -108,7 +108,7 @@ curl -X POST http://127.0.0.1:8765/v1/score -H 'Content-Type: application/json' 
 | R3 | 小学三至四年级量规草案、双人评分与封存测试规范；真实新教师记录为 0 |
 | R4 | 四角色隔离的内部风险验证；如实保留阴性结果 |
 | R5 | 独立 CPU 服务、离线多提供方协作原型、故障与压力测试 |
-| 开源整理 | 中立包名、Python/CLI/HTTP、许可隔离、私有归档和恢复验证 |
+| 开源整理 | 中立包名、Python/CLI/HTTP、许可隔离、研究归档和恢复验证 |
 
 `research/` 保留历史模块名和实验血缘，安装包只发布 `src/openessayscore`。没有重训或更改 v1 权重。[训练复现](docs/reproduction.md) · [模型血缘](docs/lineage.md) · [云端远程研发](docs/remote-development.md)
 
