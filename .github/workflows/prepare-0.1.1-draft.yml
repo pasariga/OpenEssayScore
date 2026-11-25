@@ -1,0 +1,85 @@
+name: Prepare 0.1.1 draft
+on:
+  push:
+    branches: [prepare-0.1.1-draft]
+    paths: [.github/workflows/prepare-0.1.1-draft.yml]
+permissions: {}
+concurrency:
+  group: release-draft-0.1.1
+jobs:
+  draft:
+    if: github.repository == 'pasariga/OpenEssayScore'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 62d765f931414699fe469ed2deeb12c0c6bef083
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: OpenEssayScore-0.1.1-distributions
+          run-id: '45621533331'
+          github-token: ${{ github.token }}
+          path: release-assets
+      - name: Verify distribution contents and provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = '62d765f931414699fe469ed2deeb12c0c6bef083'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/45621533331" --jq '.head_sha + " " + .conclusion')" = '62d765f931414699fe469ed2deeb12c0c6bef083 success'
+          python3 - <<'PY'
+          from email.parser import BytesParser
+          from pathlib import Path
+          from tarfile import open as open_tar
+          from zipfile import ZipFile
+
+          root = Path("release-assets")
+          wheel = root / "openessayscore-0.1.1-py3-none-any.whl"
+          sdist = root / "openessayscore-0.1.1.tar.gz"
+          assert set(root.iterdir()) == {wheel, sdist}
+          suffixes = {".py", ".cfg", ".json", ".md", ".toml", ".txt", ".yaml", ".yml"}
+          metadata_names = {"LICENSE", "METADATA", "PKG-INFO", "RECORD", "WHEEL"}
+
+          def verify_member(name):
+              member = Path(name)
+              assert not member.is_absolute() and ".." not in member.parts, name
+              assert member.suffix in suffixes or member.name in metadata_names, name
+
+          def verify_metadata(data):
+              metadata = BytesParser().parsebytes(data)
+              assert metadata["Name"].lower() == "openessayscore"
+              assert metadata["Version"] == "0.1.1"
+
+          with ZipFile(wheel) as archive:
+              for name in archive.namelist():
+                  verify_member(name)
+              verify_metadata(archive.read("openessayscore-0.1.1.dist-info/METADATA"))
+          with open_tar(sdist) as archive:
+              for member in archive.getmembers():
+                  assert member.isdir() or member.isfile(), member.name
+                  if member.isfile():
+                      verify_member(member.name)
+              verify_metadata(archive.extractfile("openessayscore-0.1.1/PKG-INFO").read())
+          PY
+      - name: Create and verify unpublished draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source='62d765f931414699fe469ed2deeb12c0c6bef083'
+          base="https://github.com/$GITHUB_REPOSITORY/blob/$source/docs"
+          sed -E "s@\\]\((synthetic-quickstart|model-card)\\.md\\)@]($base/\\1.md)@g" docs/RELEASE-NOTES-0.1.1.md > "$RUNNER_TEMP/openessayscore-0.1.1-notes.md"
+          printf '\nBuild / 构建源码：[%s](https://github.com/%s/commit/%s). CI: [14 passed, 30 skipped](https://github.com/%s/actions/runs/45621533331).\n' "${source:0:7}" "$GITHUB_REPOSITORY" "$source" "$GITHUB_REPOSITORY" >> "$RUNNER_TEMP/openessayscore-0.1.1-notes.md"
+          if ! gh release view v0.1.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create v0.1.1 release-assets/* --repo "$GITHUB_REPOSITORY" --target "$source" --draft --prerelease --latest=false --title "OpenEssayScore 0.1.1" --notes-file "$RUNNER_TEMP/openessayscore-0.1.1-notes.md"
+          fi
+          gh release view v0.1.1 --repo "$GITHUB_REPOSITORY" --json isDraft,isPrerelease,targetCommitish,assets,url |
+            jq -e --arg source "$source" 'select(.isDraft and .isPrerelease and .targetCommitish == $source and (.assets | length) == 2) | {isDraft, isPrerelease, targetCommitish, assets: [.assets[].name], url}'
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v0.1.1" >/dev/null 2>&1; then
+            echo 'Unexpected tag exists' >&2
+            exit 1
+          fi
