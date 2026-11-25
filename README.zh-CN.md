@@ -1,14 +1,16 @@
+<img src="docs/assets/logo.svg" width="66" alt="OpenEssayScore 标志">
+
 # OpenEssayScore
 
-**Open-Source Chinese Essay Scoring Toolkit · 开源中文作文评分工具包**
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-[English](README.md) | [简体中文](README.zh-CN.md) · [模型卡](docs/model-card.md) · [实验记录](docs/experiments.md) · [安装与部署](docs/deployment.md)
+**用 CPU 复现中文作文评分的研究流程。**
 
-面向开发者、研究人员和教育软件团队的独立研究工具：数据处理、监督学习评分、CPU 推理、可选 HTTP 服务及离线复核实验。可集成到不同应用，无需任何作文批改网站、数据库或付费模型 API。
+使用字符级 TF-IDF 和岭回归预测原生 0–10 分，提供 Python、CLI 和可选 HTTP 接口。
 
-当前是 **0.1.0 研究源码首发**，继承历史 WenHeng-Score v1 的字符 TF-IDF＋Ridge 评分器。训练的是中文作文总分预测器，不是通用大语言模型。模型原生分数为 **0–10**，尚未充分验证跨年级、跨题目和真实教学效果，不能替代教师。
+[运行合成数据示例](docs/synthetic-quickstart.md) · [模型卡](docs/model-card.md) · [历史实验](docs/experiments.md) · [反馈](https://github.com/pasariga/OpenEssayScore/issues/new/choose)
 
-> **源码克隆不包含可直接使用的模型权重。** 本仓库公开原创代码、空白标注模板与汇总实验结果；不包含学生作文或模型二进制。数据发布者标注 CC BY 4.0，同时声明研究用途与人工监督。公开权重的用途边界和相关权利仍待确认，独立的私有[研究归档](https://github.com/pasariga/OpenEssayScore-Archive)保存研究导出记录与材料，仅授权读者可访问；2026-10-24 已核实其私有状态。源码 MIT 许可不覆盖归档的模型和数据权利，私有访问也不自动构成这些权利的授权。安装源码本身不会获得评分权重；无权重时就绪检查返回 503，不生成占位分数。详见[许可与数据来源](docs/licensing.md)。
+**适用范围。** 公开源码不附学生作文或已训练权重。真实课堂、跨年级和跨题目效果尚未验证。入门示例的标签为人为设定，只用于验证流程。
 
 ## 项目身份与当前范围
 
@@ -27,7 +29,7 @@ OpenEssayScore 将历史 WenHeng-Score 研究线整理为独立工具包，不�
 ## 技术架构
 
 ```mermaid
-flowchart LR
+flowchart TD
   A[合法取得的中文作文] --> B[统一规范化与联系方式脱敏]
   B --> C[字符 TF-IDF]
   C --> D[自主训练 Ridge 总分预测器]
@@ -50,7 +52,7 @@ cd OpenEssayScore
 python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install -e '.[http,test]'
+python -m pip install -e '.[test]'
 python -m pytest -q
 ```
 

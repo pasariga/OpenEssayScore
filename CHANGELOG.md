@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased — independent deployment preparation
+## 0.1.1 — research packaging and synthetic quick start
+
+- Added an independently authored synthetic CPU demo and a fresh-checkout CI build of the source distribution and wheel.
+- Kept historical model validity, scoring semantics and redistribution constraints.
+
+### Independent deployment preparation
 
 - Curated R6 dispatcher/UDS/rollback examples and tests with no private host inventory.
 - Added a reusable Docker512MiB verification harness and allowlisted image build context.

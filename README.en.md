@@ -1,14 +1,16 @@
+<img src="docs/assets/logo.svg" width="66" alt="OpenEssayScore logo">
+
 # OpenEssayScore
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-**Open-Source Chinese Essay Scoring Toolkit**
+**Reproducible Chinese essay scoring on CPU.**
 
-An independent research toolkit for developers, researchers, and education software teams: supervised Chinese essay scoring, CPU inference, data processing, reproducible evaluation, and optional HTTP serving. No website, production database, proprietary platform, or paid API is required.
+Character TF-IDF + Ridge Regression for Chinese NLP research. Scores use a native 0–10 scale. The source package includes Python, CLI and optional HTTP interfaces.
 
-This **0.1.0 source release** preserves the historical WenHeng-Score v1 model lineage. It trains a character TF-IDF + Ridge holistic score predictor, not a general-purpose LLM. Scores use the native **0–10** rubric. Cross-grade, cross-prompt, and classroom validity remain unestablished; this is not a teacher-level assessment product.
+[Run the synthetic example](docs/synthetic-quickstart.md) · [Model card](docs/model-card.md) · [Historical experiments](docs/experiments.md) · [Report an issue](https://github.com/pasariga/OpenEssayScore/issues/new/choose)
 
-**The source checkout does not include ready-to-use weights.** The repository contains original source, empty annotation templates, and aggregate results, with no student essays or model binaries. CFMS-34 is publisher-labelled CC BY 4.0 with research-use and human-oversight guidance. Public weight redistribution/use boundaries still require clarification. Separate research export records and artifacts are held in a private [research archive](https://github.com/pasariga/OpenEssayScore-Archive), available only to authorized readers. Its private visibility was confirmed on 2026-10-24. Archive materials are not covered by the source MIT license; restricted access does not itself grant model or data rights. Installing the source does not provide a ready-to-score model. Missing artifacts yield readiness 503, never fabricated scores. See [licensing](docs/licensing.md).
+**Scope.** This source release ships neither student essays nor trained weights. Classroom, cross-grade and cross-prompt validity remain unestablished. Use the educational example with its synthetic labels to check the workflow.
 
 ## Project identity and current scope
 
@@ -19,7 +21,7 @@ This documentation update does not retrain a model, publish weights, repeat benc
 ## Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
   A[Authorized Chinese text] --> B[Normalization and contact redaction]
   B --> C[Character TF-IDF]
   C --> D[Supervised Ridge predictor]
@@ -41,7 +43,7 @@ git clone https://github.com/pasariga/OpenEssayScore.git
 cd OpenEssayScore
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[http,test]'
+python -m pip install -e '.[test]'
 python -m pytest -q
 ```
 
